@@ -1,11 +1,11 @@
-import Hero from "../Components/Hero/Hero";
+import Hero from '../Components/Hero/Hero'
 
 const Home = () => {
-  return (
-    <section className="">
-      <Hero />
-    </section>
-  );
-};
+    return (
+        <section className="">
+            <Hero />
+        </section>
+    )
+}
 
-export default Home;
+export default Home

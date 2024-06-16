@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
-import logo from "../../assets/images/header/logo.svg";
+import { NavLink } from 'react-router-dom'
+import logo from '../../assets/images/header/logo.svg'
 // import Button from "../Button/Button";
-import { IoSearch } from "react-icons/io5";
-import { IoCloseCircle } from "react-icons/io5";
+import { IoSearch } from 'react-icons/io5'
+import { IoCloseCircle } from 'react-icons/io5'
 
 // Define the Header component
 const Header = () => (
@@ -15,11 +15,11 @@ const Header = () => (
         <ul className="flex items-center gap-x-8">
           {/*  ------ Map the array of objects to the list items ------  */}
           {[
-            { label: "Home", path: "/" },
-            { label: "About", path: "/about" },
-            { label: "Services", path: "/services" },
-            { label: "Blogs", path: "/blog" },
-            { label: "SignIn", path: "/signin" },
+            { label: 'Home', path: '/' },
+            { label: 'About', path: '/about' },
+            { label: 'Services', path: '/services' },
+            { label: 'Blogs', path: '/blog' },
+            { label: 'SignIn', path: '/signin' },
           ].map(({ label, path }) => (
             // Create the list item
             <li key={label}>
@@ -27,7 +27,7 @@ const Header = () => (
               <NavLink
                 to={path}
                 className={({ isActive }) =>
-                  `text-base font-medium leading-[normal] text-[color:var(--Text-Colour-2,#2B2B2B)] duration-100 [font-family:Poppins] ${isActive ? "underline" : ""}`
+                  `text-base font-medium leading-[normal] text-[color:var(--Text-Colour-2,#2B2B2B)] duration-100 [font-family:Poppins] ${isActive ? 'underline' : ''}`
                 }
               >
                 {label}
@@ -58,7 +58,7 @@ const Header = () => (
       </section>
     </section>
   </header>
-);
+)
 
 // Export the Header component
-export default Header;
+export default Header

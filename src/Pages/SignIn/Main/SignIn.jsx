@@ -1,5 +1,5 @@
 const SignIn = () => {
-  return <section className=""></section>;
-};
+  return <section className=""></section>
+}
 
-export default SignIn;
+export default SignIn
