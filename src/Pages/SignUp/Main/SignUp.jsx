@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setFormData({
@@ -12,6 +14,7 @@ const SignUp = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const res = await fetch("/api/v1/signup", {
       method: "POST",
       headers: {
@@ -20,6 +23,12 @@ const SignUp = () => {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
+    if (data.success === false) {
+      setError(data.message);
+      setLoading(false);
+      return;
+    }
+    setLoading(false);
     console.log(data);
   };
 
