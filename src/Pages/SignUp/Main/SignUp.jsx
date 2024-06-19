@@ -14,22 +14,28 @@ const SignUp = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
-    const res = await fetch("/api/v1/signup", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await res.json();
-    if (data.success === false) {
-      setError(data.message);
+    try {
+      setLoading(true);
+      const res = await fetch("/api/v1/signup", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        setLoading(false);
+        setError(data.message);
+        return;
+      }
       setLoading(false);
-      return;
+      setError(null);
+      console.log(data);
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
     }
-    setLoading(false);
-    console.log(data);
   };
 
   console.log(formData);
@@ -63,8 +69,11 @@ const SignUp = () => {
           onChange={handleChange}
         />
 
-        <button className="rounded-lg bg-blue-500 p-3 text-white opacity-80 hover:opacity-95">
-          Sign Up
+        <button
+          disabled={loading}
+          className="rounded-lg bg-blue-500 p-3 text-white opacity-80 hover:opacity-95"
+        >
+          {loading ? "Loading..." : "Sign Up"}
         </button>
       </form>
       <section className="mt-5 flex gap-2">
@@ -73,6 +82,7 @@ const SignUp = () => {
           <span className="text-blue-700">Sign In</span>
         </Link>
       </section>
+      {error && <p className="text-red-500">{error}</p>}
     </section>
   );
 };
